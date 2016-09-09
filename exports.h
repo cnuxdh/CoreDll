@@ -4,7 +4,13 @@
 #define EXPORTS_H
 
 	
-#define DLL_EXPORT  _declspec(dllexport)
+
+#ifdef _WIN32
+# define DLL_EXPORT __declspec( dllexport )
+#else
+# define DLL_EXPORT
+#endif
+
 
 
 DLL_EXPORT int    GenerateSampleFromImage(char* samPath, char* featPath, char* maskfile);

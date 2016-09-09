@@ -11,12 +11,12 @@
 using namespace std;
 
 
-//#include "exports.h"
+#include "exports.h"
 #include "gdal_priv.h"
 //#include "ogr_spatialref.h"
 
 
-#define DLL_EXPORT  _declspec(dllexport)
+//#define DLL_EXPORT  _declspec(dllexport)
 
 typedef struct struct_GeoInfo
 {
