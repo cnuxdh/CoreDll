@@ -4,9 +4,20 @@
 #include "exports.h"
 #include "defs.h"
 
-#include "cv.h"
-#include "cxcore.h"
-#include "highgui.h"
+
+#ifdef OPENCV_1X 
+	#include "cv.h"
+	#include "highgui.h"
+	#include "cxcore.h"
+#else
+	#include "opencv2/core/core.hpp"
+	#include "opencv2/imgproc/imgproc_c.h"
+	#include "opencv2/highgui/highgui.hpp"
+	using namespace cv;
+#endif
+
+
+
 
 /* Interpolates a histogram peak from left, center, and right values */
 #define interp_hist_peak( l, c, r ) ( 0.5 * ((l)-(r)) / ((l) - 2.0*(c) + (r)) )

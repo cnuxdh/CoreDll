@@ -100,7 +100,7 @@ void decrease_pq_node_key( struct pq_node* pq_array, int i, int key );/*local ty
 /**
 	Creates a new minimizing priority queue.
 */
-struct min_pq* minpq_init();
+struct min_pq* minpq_init1();
 
 /**
 	Inserts an element into a minimizing priority queue.

@@ -8,7 +8,7 @@
 using namespace std;
 
 
-#define DLL_EXPORT  _declspec(dllexport)
+//#define DLL_EXPORT  _declspec(dllexport)
 
 int DLL_EXPORT siftFeatures(char* filename, struct feature** feat );
 int DLL_EXPORT siftFeatures(char* filename, int dstHt, int dstWd, struct feature** feat );

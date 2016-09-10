@@ -6,7 +6,17 @@
 
 #include "vim_imgs.h"
 
-#include "cv.h"
+//opencv
+#ifdef OPENCV_1X 
+	#include "cv.h"
+	#include "highgui.h"
+	#include "cxcore.h"
+#else
+	#include "opencv2/core/core.hpp"
+	#include "opencv2/highgui/highgui.hpp"
+	#include "opencv2/calib3d/calib3d.hpp"
+	using namespace cv;
+#endif
 
 
 
@@ -63,7 +73,7 @@ int kdtree_bbf_knn( struct kd_node* kd_root, struct feature* feat, int k,
 	}
 
 	_nbrs = (struct feature**)calloc( k, sizeof( struct feature* ) );
-	min_pq = minpq_init();
+	min_pq = minpq_init1();
 	minpq_insert( min_pq, kd_root, 0 );
 	while( min_pq->n > 0  &&  t < max_nn_chks )
 	{
@@ -519,7 +529,7 @@ int insert_into_nbr_array( struct feature* feat, struct feature** nbrs,
 /*
 Creates a new minimizing priority queue.
 */
-struct min_pq* minpq_init()
+struct min_pq* minpq_init1()
 {
 	struct min_pq* min_pq;
 

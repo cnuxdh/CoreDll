@@ -21,6 +21,15 @@
 //#include "cxcore.h"
 
 
+
+
+#ifdef _WIN32
+# define DLL_EXPORT __declspec( dllexport )
+#else
+# define DLL_EXPORT
+#endif
+
+
 /******************************* Defs and macros *****************************/
 #define SIFT_INTVLS				5		// intervals per octave 
 #define SIFT_SIGMA				1.6		// sigma for gaussian smoothing 

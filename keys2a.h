@@ -27,9 +27,11 @@
 
 //#include <zlib.h>
 //#include "ANN/ANN.h"
+//#include "../../zlib/include/zlib.h"
 
-#include "../../zlib/include/zlib.h"
-#include "../../ann_1.1_char/include/ann/ANN.h"
+
+#include "include/ann/ANN.h"
+
 
 using namespace ann_1_1_char;
 
@@ -93,7 +95,7 @@ int ReadKeyPositions(const char *filename, keypt_t **info);
 int DLL_EXPORT ReadKeys(char* filepath, unsigned char **keys, keypt_t **info = NULL);
 int DLL_EXPORT ReadKeysBin(char* filepath, unsigned char **keys, keypt_t **info = NULL);
 
-int ReadKeysGzip(gzFile fp, unsigned char **keys, keypt_t **info = NULL);
+//int ReadKeysGzip(gzFile fp, unsigned char **keys, keypt_t **info = NULL);
 
 /* Read keys using MMAP to speed things up */
 std::vector<Keypoint *> ReadKeysMMAP(FILE *fp);

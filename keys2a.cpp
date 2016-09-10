@@ -25,8 +25,7 @@
 #include <time.h>
 
 //#include <zlib.h>
-
-#include "../../zlib/include/zlib.h"
+//#include "../../zlib/include/zlib.h"
 
 #include "keys2a.h"
 
@@ -42,20 +41,26 @@ int GetNumberOfKeysNormal(FILE *fp)
     return num;
 }
 
+/*
 int GetNumberOfKeysGzip(gzFile fp)
 {
     int num, len;
 
     char header[256];
+    
+    
     gzgets(fp, header, 256);
 
     if (sscanf(header, "%d %d", &num, &len) != 2) {
         printf("Invalid keypoint file.\n");
         return 0;
     }
+    
 
     return num;
 }
+*/
+
 
 /* Returns the number of keys in a file */
 int GetNumberOfKeys(const char *filename)
@@ -67,6 +72,8 @@ int GetNumberOfKeys(const char *filename)
         /* Try to file a gzipped keyfile */
         char buf[1024];
         sprintf(buf, "%s.gz", filename);
+        
+        /*
         gzFile gzf = gzopen(buf, "rb");
 
         if (gzf == NULL) {
@@ -77,6 +84,7 @@ int GetNumberOfKeys(const char *filename)
             gzclose(gzf);
             return n;
         }
+        */
     }
 
     int n = GetNumberOfKeysNormal(file);
@@ -92,8 +100,9 @@ int ReadKeyFile(char *filename, unsigned char **keys, keypt_t **info)
 
     file = fopen (filename, "r");
     if (! file)
-	{
+	  {
         /* Try to file a gzipped keyfile */
+        /*
         char buf[1024];
         sprintf(buf, "%s.gz", filename);
         gzFile gzf = gzopen(buf, "rb");
@@ -101,13 +110,14 @@ int ReadKeyFile(char *filename, unsigned char **keys, keypt_t **info)
         if (gzf == NULL) {
             printf("Could not open file: %s\n", filename);
             return 0;
-        } 
+        */
+    }
 		else
 		{
-            int n = ReadKeysGzip(gzf, keys, info);
-            gzclose(gzf);
-            return n;
-        }
+            //int n = ReadKeysGzip(gzf, keys, info);
+            //gzclose(gzf);
+            //return n;
+    
     }
 
     int n = ReadKeys((filename), keys, info);
@@ -328,10 +338,11 @@ int ReadKeysBin(char* filepath, unsigned char **keys, keypt_t **info)
 	return num; // kps;
 }
 
-
+/*
 int ReadKeysGzip(gzFile fp, unsigned char **keys, keypt_t **info)
 {
     int i, num, len;
+
 
     std::vector<Keypoint *> kps;
     char header[256];
@@ -354,8 +365,7 @@ int ReadKeysGzip(gzFile fp, unsigned char **keys, keypt_t **info)
 
     unsigned char *p = *keys;
     for (i = 0; i < num; i++) {
-        /* Allocate memory for the keypoint. */
-        // short int *d = new short int[128];
+        
         float x, y, scale, ori;
         char buf[1024];
         gzgets(fp, buf, 1024);
@@ -396,8 +406,12 @@ int ReadKeysGzip(gzFile fp, unsigned char **keys, keypt_t **info)
 
     assert(p == *keys + 128 * num);
 
+
     return num; // kps;
 }
+*/
+
+
 
 /* Create a search tree for the given set of keypoints */
 ANNkd_tree *CreateSearchTree(int num_keys, unsigned char *keys)
