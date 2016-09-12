@@ -45,3 +45,25 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.obj
+Debug/vc80.idb
+*.res
+Debug/CoreDll.dll.embed.manifest
+*.htm
+Debug/BAT0000081655614432.bat
+*.user
+*.svn-base
+.svn/format
+*.bat
+Debug/vc80.pdb
+*.pch
+Debug/CoreDll.dll.intermediate.manifest
+*.idb
+Release/vc80.pdb
+*.txt
+Debug/mt.dep
+*.vcproj
+.svn/entries
+*.db
+*.cpp
+stdafx.h

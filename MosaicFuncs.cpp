@@ -19,7 +19,7 @@
 #include "../../Corelib/LatLong-UTMconversion.h"
 
 
-#include "CVLib/bundlerio.hpp"
+#include "CVLib/defines.hpp"
 
 #include "defs.h"
 #include "vim_imgs.h"
