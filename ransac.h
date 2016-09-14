@@ -1,6 +1,7 @@
 #ifndef RANSAC_H
 #define RANSAC_H
 
+
 #ifdef OPENCV_1X 
 	#include "cv.h"
 	#include "highgui.h"
@@ -11,6 +12,8 @@
 	#include "opencv2/calib3d/calib3d.hpp"
 	using namespace cv;
 #endif
+
+
 //#include "cv.h"
 //#include "highgui.h"
 
