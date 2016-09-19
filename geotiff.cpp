@@ -1162,42 +1162,66 @@ DLL_EXPORT int  ReadGeoFileByte(char* filePath, int bandId, double ratio,
 		poBand->RasterIO(GF_Read,0,0,swd,sht,pUShort,wd,ht,GDT_UInt16,0,0);
 		GetArrayMinMax(pUShort, wd*ht, dMin, dMax);
 		for(int i=0; i<wd*ht; i++)
+		{
+			if( pUShort[i]==0 )
+				continue;
 			(*pBuffer)[i] = (pUShort[i] - dMin) / (dMax-dMin)*255;
+		}
 		break;
 	case 3: //16 bit signed int
 		pShort = (short*)malloc(ht*wd*2);
 		poBand->RasterIO(GF_Read,0,0,swd,sht,pShort,wd,ht,GDT_Int16,0,0);
 		GetArrayMinMax(pShort, wd*ht, dMin, dMax);
 		for(int i=0; i<wd*ht; i++)
+		{
+			if( pShort[i]==0 )
+				continue;
 			(*pBuffer)[i] = (pShort[i] - dMin) / (dMax-dMin)*255;
+		}
 		break;
 	case 4: //32 bit unsigned int
 		pUInt = (unsigned int*)malloc(ht*wd*4);
 		poBand->RasterIO(GF_Read,0,0,swd,sht,pUInt,wd,ht,GDT_UInt32,0,0);
 		GetArrayMinMax(pUInt, wd*ht, dMin, dMax);
 		for(int i=0; i<wd*ht; i++)
+		{
+			if(pUInt[i]==0)
+				continue;
 			(*pBuffer)[i] = (pUInt[i] - dMin) / (dMax-dMin)*255;
+		}
 		break;
 	case 5: //32 bit signed int
 		pInt = (int*)malloc(ht*wd*4);
 		poBand->RasterIO(GF_Read,0,0,swd,sht,pInt,wd,ht,GDT_Int32,0,0);
 		GetArrayMinMax(pInt, wd*ht, dMin, dMax);
 		for(int i=0; i<wd*ht; i++)
+		{
+			if( pInt[i]==0 )
+				continue;
 			(*pBuffer)[i] = (pInt[i] - dMin) / (dMax-dMin)*255;
+		}
 		break;
 	case 6: //32 bit float
 		pFloat = (float*)malloc(ht*wd*4);
 		poBand->RasterIO(GF_Read,0,0,swd,sht,pUInt,wd,ht,GDT_Float32,0,0);
 		GetArrayMinMax(pFloat, wd*ht, dMin, dMax);
 		for(int i=0; i<wd*ht; i++)
+		{
+			if(pFloat[i]==0)
+				continue;
 			(*pBuffer)[i] = (pFloat[i] - dMin) / (dMax-dMin)*255;
+		}
 		break;
 	case 7: //64 bit float
 		pDouble = (double*)malloc(ht*wd*8);
 		poBand->RasterIO(GF_Read,0,0,swd,sht,pDouble,wd,ht,GDT_Float64,0,0);
 		GetArrayMinMax(pDouble, wd*ht, dMin, dMax);
 		for(int i=0; i<wd*ht; i++)
+		{
+			if(pDouble[i]==0)
+				continue;
 			(*pBuffer)[i] = (pDouble[i] - dMin) / (dMax-dMin)*255;
+		}
 		break;
 	default:
 		break;		
