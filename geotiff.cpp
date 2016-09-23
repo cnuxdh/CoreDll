@@ -1127,6 +1127,23 @@ int  ReadGeoFileUInt(char* filePath, int bandId, unsigned int** pBuffer, int& ht
 }
 
 
+int ReadGeoFileGeneral(char* filepath, int bandId, void* pBuffer, GDALDataType nType)
+{
+	GDALAllRegister();
+
+	GDALDataset *poDataset = (GDALDataset*)GDALOpen(filepath, GA_ReadOnly); 
+	GDALRasterBand *poBand  = poDataset->GetRasterBand(bandId);
+	
+	int wd = poBand->GetXSize();
+	int ht = poBand->GetYSize();
+
+	poBand->RasterIO(GF_Read, 0, 0, wd, ht, pBuffer, wd, ht, nType,0,0);
+
+	GDALClose( (GDALDatasetH) poDataset );
+
+	return 0;
+}
+
 DLL_EXPORT int  ReadGeoFileByte(char* filePath, int bandId, double ratio, 
 								unsigned char** pBuffer, int& ht, int& wd)
 {

@@ -60,6 +60,8 @@ DLL_EXPORT int  ReadGeoFileFloat(char* filePath, int bandId, float** pBuffer, in
 DLL_EXPORT int  ReadGeoFileInt(char* filePath, int bandId, int** pBuffer, int& ht, int& wd);
 DLL_EXPORT int  ReadGeoFileUInt(char* filePath, int bandId, unsigned int** pBuffer, int& ht, int& wd);
 
+//template funcion
+DLL_EXPORT int  ReadGeoFileGeneral(char* filepath, int bandId, void* pBuffer, GDALDataType nType);
 
 
 
