@@ -1150,7 +1150,7 @@ int writeSiftForBundlerBin(struct feature* pFeat, int nFeat, char* filepath)
 		fwrite(&scale, sizeof(float), 1, fp);
 		fwrite(&ori, sizeof(float), 1, fp);
 		//feature vector
-        fwrite(pFeat[i].descr, sizeof(float), 128, fp);
+    fwrite(pFeat[i].descr, sizeof(float), 128, fp);
 	}
 	fclose(fp);
 
