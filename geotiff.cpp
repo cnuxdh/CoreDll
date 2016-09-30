@@ -1160,6 +1160,8 @@ DLL_EXPORT int  ReadGeoFileByte(char* filePath, int bandId, double ratio,
 
 	int ntype = poBand->GetRasterDataType();
 	*pBuffer=(unsigned char*)malloc(sizeof(unsigned char)*wd*ht);
+	memset(*pBuffer, 0, sizeof(unsigned char)*wd*ht);
+
 
 	unsigned short* pUShort = NULL;
 	short* pShort = NULL;
