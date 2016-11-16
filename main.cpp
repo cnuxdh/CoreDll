@@ -40,7 +40,7 @@ void PairMatchUsingSiftKey(unsigned char* lKey, int nLeftKey,
 						  unsigned char* rKey, int nRightKey,
 						  vector<int>& lKeyIds, vector<int>& rKeyIds)
 {
-	double ratio = 0.8;
+	double ratio = 0.7;
 
 	/* Create a tree from the keys */
 	//ANNkd_tree *tree = CreateSearchTree(nRightKey, rKey);	
