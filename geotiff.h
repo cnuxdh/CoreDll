@@ -3,7 +3,7 @@
 #ifndef GEO_TIFF_H
 #define GEO_TIFF_H
 
-#include "ogr_spatialref.h"
+//#include "ogr_spatialref.h"
 
 
 #include <vector>
