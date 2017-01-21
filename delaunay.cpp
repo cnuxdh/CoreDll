@@ -2,7 +2,7 @@
 #include "stdio.h"
 
 #include "delaunay.h"
-#include "../../Corelib/CommonFuncs.h"
+#include "CommonFuncs.h"
 
 
 void GenerateDelaunayTriangle(CTINClass* pTin, double* px, double* py, int np)
@@ -41,9 +41,9 @@ void DrawDelaunayTriangle(IplImage* pImage, CTINClass* pTin)
 			pts[k].y = (*tris)->vertex[k]->y;
 			index    = (*tris)->vertex[k]->attr;
 		}
-		cvLine(pImage, pts[0], pts[1], CV_RGB(255,255,255), 1, 8, 0);
-		cvLine(pImage, pts[1], pts[2], CV_RGB(255,255,255), 1, 8, 0);
-		cvLine(pImage, pts[0], pts[2], CV_RGB(255,255,255), 1, 8, 0);
+		cvLine(pImage, pts[0], pts[1], CV_RGB(255,0,0), 1, 8, 0);
+		cvLine(pImage, pts[1], pts[2], CV_RGB(255,0,0), 1, 8, 0);
+		cvLine(pImage, pts[0], pts[2], CV_RGB(255,0,0), 1, 8, 0);
 		*tris++;	
 	}	
 }
@@ -85,9 +85,9 @@ int  SelectTriangle(double x, double y, CTINClass* pTin, int* pIndex)
 
 
 
-/* the script demostrates iterative construction of
-delaunay triangulation and voronoi tesselation */
-
+// the script demostrates iterative construction of
+//delaunay triangulation and voronoi tesselation 
+/*
 CvSubdiv2D* init_delaunay( CvMemStorage* storage, CvRect rect )
 {
 	CvSubdiv2D* subdiv;
@@ -253,3 +253,4 @@ void paint_voronoi( CvSubdiv2D* subdiv, IplImage* img )
 	}
 }
 
+*/
